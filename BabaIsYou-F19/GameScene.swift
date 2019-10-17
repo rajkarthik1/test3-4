@@ -25,8 +25,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 //    func didBegin(_ contact: SKPhysicsContact) {
 //        print("Something collided!")
     // get all your enemy sprites (TESTING)
-    let moveLeftAction = SKAction.moveBy(
-        x: -400, y: 0, duration: 15)
+//    let moveLeftAction = SKAction.moveBy(
+//        x: -400, y: 0, duration: 15)
 //    self.enumerateChildNodes(withName: "enemy") {
 //        (node, stop) in
 //        let enemy = node as! SKSpriteNode
@@ -48,6 +48,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if (nodeA == nil || nodeB == nil) {
             return
         }
+    if (nodeA!.name == "flag" && nodeB!.name == "player") {
+    print("CONGRATULATIONS")
+    // show new LEVEL
+    }
+    if (nodeA!.name == "player" && nodeB!.name == "flag") {
+        print("BABA WIN")
+        // show new LEVEL
+    }
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
