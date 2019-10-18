@@ -69,6 +69,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
          print("yess+")
     
     }
+//    FLAG IS STOP
+    if (nodeA!.name == "flagblock" && nodeB!.name == "isblock") {
+     print("Flag IS STOP")
+    
+     }
+     
+     if (nodeA!.name == "isblock" && nodeB!.name == "flagblock") {
+         print("+++++++")
+
+    }
     }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         // GET THE POSITION WHERE THE MOUSE WAS CLICKED
