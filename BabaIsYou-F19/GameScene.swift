@@ -14,50 +14,62 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 //  Sprites  outlet
      var player:SKSpriteNode!
      let PLAYER_SPEED:CGFloat = 20
+    var wallblock:SKSpriteNode!
+    var isblock:SKSpriteNode!
+    var flagblock:SKSpriteNode!
+    var stopblock:SKSpriteNode!
     
 
     override func didMove(to view: SKView) {
         self.physicsWorld.contactDelegate = self
         // initialze the player
-               self.player = self.childNode(withName: "player") as! SKSpriteNode
+        self.player = self.childNode(withName: "player") as? SKSpriteNode
+        self.wallblock = self.childNode(withName: "wallblock") as? SKSpriteNode
+        self.flagblock = self.childNode(withName: "flagblock") as? SKSpriteNode
+        self.isblock = self.childNode(withName: "isblock") as? SKSpriteNode
+        self.stopblock = self.childNode(withName: "stopblock") as? SKSpriteNode
+        
+            
     
-   
-//    func didBegin(_ contact: SKPhysicsContact) {
-//        print("Something collided!")
-    // get all your enemy sprites (TESTING)
-//    let moveLeftAction = SKAction.moveBy(
-//        x: -400, y: 0, duration: 15)
-//    self.enumerateChildNodes(withName: "enemy") {
-//        (node, stop) in
-//        let enemy = node as! SKSpriteNode
-//        enemy.run(moveLeftAction)
     }
-    
-   
     
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
     }
-    
     
     // detect when collision occurs
  func didBegin(_ contact: SKPhysicsContact) {
         let nodeA = contact.bodyA.node
         let nodeB = contact.bodyB.node
         
+        
         if (nodeA == nil || nodeB == nil) {
             return
         }
-    if (nodeA!.name == "flag" && nodeB!.name == "player") {
-    print("CONGRATULATIONS")
-    // show new LEVEL
-    }
-    if (nodeA!.name == "player" && nodeB!.name == "flag") {
-        print("BABA WIN")
-        // show new LEVEL
-    }
-    }
+//    if (nodeA!.name == "flag" && nodeB!.name == "player") {
+//    print("CONGRATS")
+//
+//    }
+//
+//    if (nodeA!.name == "player" && nodeB!.name == "flag") {
+//        print("CONGRATS")
+        
+//    if (nodeA!.name == "player" && nodeB!.name == "wall"){
+//        return(
+        
+    //}
     
+//    WALL IS STOP
+    if (nodeA!.name == "wallblock" && nodeB!.name == "isblock") {
+     print("WALL IS STOP")
+    
+     }
+     
+     if (nodeA!.name == "isblock" && nodeB!.name == "wallblock") {
+         print("yess+")
+    
+    }
+    }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         // GET THE POSITION WHERE THE MOUSE WAS CLICKED
         // ---------------------------------------------
